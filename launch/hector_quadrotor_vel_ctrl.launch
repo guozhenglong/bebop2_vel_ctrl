@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="velocity_control_node" pkg="bebop2_vel_ctrl" type="velocity_control_node" output="screen" >
+        <param name="debug" value="false" />
+        <param name="K_p_x" value="0.07" />
+        <param name="K_p_y" value="0.07" />   
+        <param name="K_p_z" value="0.5" />
+        <param name="MaxV_xy" value="0.5" /> 
+        <param name="MaxV_z" value="1.0" />
+        
+        <remap from="/velocity_cmd" to="/velocity_cmd"/>
+        <remap from="/velocity_current" to="/velocity_current"/>
+  </node>
+</launch>
