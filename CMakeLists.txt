@@ -127,8 +127,15 @@ include_directories(
 # )
 
 add_executable(velocity_control_node src/vel_ctrl.cpp src/bebop_vel_ctrl.cpp)
+add_executable(position_control_node src/pos_ctrl.cpp src/bebop_pos_ctrl.cpp)
+
 add_dependencies(velocity_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(position_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 target_link_libraries(velocity_control_node
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(position_control_node
   ${catkin_LIBRARIES}
 )
 

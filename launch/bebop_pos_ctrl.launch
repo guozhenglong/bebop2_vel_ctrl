@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="position_control_node" pkg="bebop2_vel_ctrl" type="position_control_node" output="screen" >
+        <param name="debug" value="true" />
+        <param name="K_p_x" value="0.4" />
+        <param name="K_p_y" value="0.4" />   
+        <param name="K_p_z" value="0.5" />
+       
+        <remap from="target_pos" to="target_pos"/>
+        <remap from="pos_sync" to="pos_sync"/>
+  </node>
+</launch>

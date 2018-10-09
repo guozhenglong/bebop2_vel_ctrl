@@ -11,9 +11,9 @@ namespace Bebop_Ctrl
         pnh.param("MaxV_xy", _MaxV_xy, 0.3); 
         pnh.param("MaxV_z", _MaxV_z, 0.2); 
 
-        _bebop_cmd_vel = _nh_.advertise<geometry_msgs::Twist>("/bebop/cmd_vel",1);
-        _get_cmd_vel = _nh_.subscribe("/velocity_cmd",2,&bebop_vel_ctrl::CmdVelCallback,this);
-        _get_velocity = _nh_.subscribe("/velocity_current",2,&bebop_vel_ctrl::VelocityCallback,this);
+        _bebop_cmd_vel = _nh_.advertise<geometry_msgs::Twist>("cmd_vel",1);
+        _get_cmd_vel = _nh_.subscribe("velocity_cmd",2,&bebop_vel_ctrl::CmdVelCallback,this);
+        _get_velocity = _nh_.subscribe("velocity_current",2,&bebop_vel_ctrl::VelocityCallback,this);
         usleep(50000);  // 10000ms can not receive correct data
         ros::spin();
 
