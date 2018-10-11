@@ -6,7 +6,7 @@
         <param name="K_p_y" value="0.5" />   
         <param name="K_p_z" value="0.5" />
         <param name="MaxV_xy" value="0.5" /> 
-        <param name="MaxV_z" value="1.0" />
+        <param name="MaxV_z" value="0.3" />
         
         <remap from="velocity_cmd" to="velocity_cmd"/>
         <remap from="velocity_current" to="vel_sync"/>

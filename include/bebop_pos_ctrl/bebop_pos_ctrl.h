@@ -19,6 +19,7 @@ class bebop_pos_ctrl{
         ros::Subscriber _get_command_pos;
         ros::Publisher  _velocity_cmd;
         geometry_msgs::PoseStamped _pos_current;
+        double _yaw;
         geometry_msgs::Twist _command_pos;
         geometry_msgs::Twist _velocity_cmd_pub;
 

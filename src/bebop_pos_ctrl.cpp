@@ -24,19 +24,21 @@ namespace Bebop_Ctrl
         _velocity_cmd_pub.linear.x = _K_p_x*(_command_pos.linear.x - _pos_current.pose.position.x);
         _velocity_cmd_pub.linear.y = _K_p_y*(_command_pos.linear.y - _pos_current.pose.position.y);
         _velocity_cmd_pub.linear.z = _K_p_z*(_command_pos.linear.z - _pos_current.pose.position.z);
-        geometry_msgs::Point euler_Angle;
-        geometry_msgs::Quaternion quaternion;
-        quaternion = _pos_current.pose.orientation;
-        Quat2Euler(quaternion, euler_Angle);
+
         _velocity_cmd_pub.angular.x = 0.0;
         _velocity_cmd_pub.angular.y = 0.0;
-        _velocity_cmd_pub.angular.z = -0.5 * euler_Angle.z;
+        _velocity_cmd_pub.angular.z = 0.5 * (0.0 - _yaw);
         _velocity_cmd.publish(_velocity_cmd_pub);
     }
 
     void bebop_pos_ctrl::currentPositionCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
     {
         _pos_current = *msg;
+        geometry_msgs::Point euler_Angle;
+        geometry_msgs::Quaternion quaternion;
+        quaternion = _pos_current.pose.orientation;
+        Quat2Euler(quaternion, euler_Angle);
+        _yaw = -1.0*euler_Angle.z;
     }
 
     void bebop_pos_ctrl::Quat2Euler(geometry_msgs::Quaternion &quat, geometry_msgs::Point &euler)
